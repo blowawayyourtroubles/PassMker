@@ -6,13 +6,15 @@ from datetime import datetime
 
 
 def main():
-    resultado = contraseña()
-    print(resultado)
+    result = password()
+    print(result)
 
 
-def contraseña():
+def password():
+
     user_name = input("Insert your user: ")
     web_site = input("Insert the website: ")
+
     while True:
         password = input("Insert your password: ")
 
@@ -21,20 +23,17 @@ def contraseña():
         has_number = False
         has_special = False
 
-        for char in password:
-            if char.isalpha():
+        for c in password:
+            if c in string.ascii_letters:
                 has_letter = True
-            elif char.isdigit():
+            elif c in string.digits:
                 has_number = True
-            elif not char.isalnum():
+            elif c in string.punctuation:
                 has_special = True
 
-        if lenght_ok and has_letter and has_number and has_special:
-            print(f"Your user is {user_name}, website is {web_site}, and your password is {password}.")
+        if lenght_ok and has_letter and has_number and has_special and  len(set(password)) == len(password):
+            print(f"Your user is {user_name}, website is {web_site}, and your password is {password}")
         print("Wrong password input, try again.")
-
-
-
 
 if __name__ == "__main__":
     main()
