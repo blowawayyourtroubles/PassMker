@@ -7,7 +7,7 @@ from datetime import datetime
 
 def main():
     result = password()
-    print(result)
+    return f"Stored: {result}"
 
 
 def password():
@@ -15,13 +15,21 @@ def password():
     user_name = input("Insert your user: ")
     web_site = input("Insert the website: ")
 
-    while True:
-        password = input("Insert your password: ")
+    chars = string.ascii_letters + string.digits + string.punctuation
+    length = 12
 
-        lenght_ok = len(password) >= 8
+    while True:
+
+        password = ""
+
+        for _ in range(length):
+            character = secrets.choice(chars)
+            password += character
+
         has_letter = False
         has_number = False
         has_special = False
+        is_unique = len(set(password)) == len(password)
 
         for c in password:
             if c in string.ascii_letters:
@@ -31,9 +39,14 @@ def password():
             elif c in string.punctuation:
                 has_special = True
 
-        if lenght_ok and has_letter and has_number and has_special and  len(set(password)) == len(password):
-            print(f"Your user is {user_name}, website is {web_site}, and your password is {password}")
-        print("Wrong password input, try again.")
+        if has_letter and has_number and has_special and is_unique:
+            print(
+                f"Success! User: {user_name}, Website: {web_site}"
+            )
+            return password
+
+        print("Generated password did not meet criteria, retrying...")
+
 
 if __name__ == "__main__":
     main()
