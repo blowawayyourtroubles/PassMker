@@ -25,7 +25,7 @@ def password():
         has_letter = False
         has_number = False
         has_special = False
-        
+
         is_unique = len(set(password)) == len(password)
 
         for c in password:
@@ -45,9 +45,11 @@ def password():
         print("Generated password did not meet criteria, retrying...")
 
 
-def save_to_json():
-    ...
-    date = {}
+# def save_to_json():
+#     ...
+#     date = {}
+
+
 
 
 if __name__ == "__main__":

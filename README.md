@@ -35,3 +35,6 @@ Credentials are saved locally in a passwords.json file with the following struct
     }
 ]
 ```
+
+## TODO
+Aim to create a Python command-line package for managing user passwords, including creation, reading, prompting, and saving, installable across various terminals.
